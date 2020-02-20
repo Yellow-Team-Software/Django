@@ -1,0 +1,12 @@
+
+<form method="POST" action="/counts/room/">
+    {% csrf_token %}
+    {{form}}
+    <input class="btn " type="submit" name="Create Task">
+</form>
+
+{% for room in rooms %}
+    <div>
+        <span>{{room}}</span>
+    </div>
+{% endfor %}

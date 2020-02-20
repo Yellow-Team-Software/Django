@@ -1,0 +1,12 @@
+
+<form method="POST" action="/counts/speaker/">
+    {% csrf_token %}
+    {{form}}
+    <input class="btn " type="submit" name="Create Task">
+</form>
+
+{% for speaker in speakers %}
+    <div>
+        <span>{{speaker}}</span>
+    </div>
+{% endfor %}

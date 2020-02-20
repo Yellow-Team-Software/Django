@@ -1,0 +1,12 @@
+
+<form method="POST" action="/counts/sess/">
+    {% csrf_token %}
+    {{form}}
+    <input class="btn " type="submit" name="Create Task">
+</form>
+
+{% for sess in sessions %}
+    <div>
+        <span>{{sess}}</span>
+    </div>
+{% endfor %}
