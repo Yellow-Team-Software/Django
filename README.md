@@ -11,7 +11,7 @@ pip install django
 
 
 ## Activate Server
-activate the server in command prompt with command:
+Go into the folder count_proj and activate the server with command:
 ```
 python manage.py runserver
 ```
