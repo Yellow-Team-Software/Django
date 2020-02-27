@@ -52,7 +52,7 @@ def speakers(request):
 def homePage(request):
 	speakers = Speaker.objects.all()
 
-	form = SessionForm()
+	form = SessForm()
 
 	if request.method =='POST':
 		form = SpeakerForm(request.POST)
