@@ -47,3 +47,21 @@ def speakers(request):
 
 	context = {'speakers':speakers, 'form':form}
 	return render(request, 'countmanager/speakers.html', context)
+
+
+def homePage(request):
+	speakers = Speaker.objects.all()
+
+	form = SessionForm()
+
+	if request.method =='POST':
+		form = SpeakerForm(request.POST)
+		if form.is_valid():
+			form.save()
+		return redirect('/counts')
+
+
+	context = {'speakers':speakers, 'form':form}
+	return render(request, 'countmanager/SelectSess.html', context)
+
+
