@@ -5,7 +5,7 @@ class Room(models.Model):
     name = models.CharField(max_length=30)
     capacity = models.IntegerField(default=0)
 
-    def str(self):
+    def __str__(self):
         return self.name
 
 class Speaker(models.Model):
@@ -15,7 +15,7 @@ class Speaker(models.Model):
     email = models.CharField(max_length=30)
 
 
-    def str(self):
+    def __str__(self):
         return self.first_name + self.last_name
 
 
@@ -31,6 +31,6 @@ class Session(models.Model):
     room = models.ForeignKey(Room,on_delete=models.CASCADE)
     time_slot = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
 
-    def str(self):
-        return self.name + "\n by: " + self.speaker.name + "\n in room: "+ self.room.name
+    def __str__(self):
+        return self.name + "\n by: " + self.speaker.__str__() + "\n in room: "+ self.room.__str__()
    
