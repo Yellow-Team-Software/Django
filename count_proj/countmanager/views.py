@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from .filters import *
 
 # Create your views here.
 def rooms(request):
@@ -50,18 +51,13 @@ def speakers(request):
 
 
 def homePage(request):
-	speakers = Speaker.objects.all()
+	sessions = Session.objects.all()
+	form = SessionFilter(request.GET, queryset=sessions)
 
-	form = SessForm()
-
-	if request.method =='POST':
-		form = SpeakerForm(request.POST)
-		if form.is_valid():
-			form.save()
-		return redirect('/counts')
+	
 
 
-	context = {'speakers':speakers, 'form':form}
+	context = {'speakers':speakers, 'filter':form}
 	return render(request, 'countmanager/SelectSess.html', context)
 
 
