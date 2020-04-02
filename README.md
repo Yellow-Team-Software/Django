@@ -16,3 +16,5 @@ Go into the folder count_proj and activate the server with command:
 ```
 python manage.py runserver
 ```
+
+This site is meant to keep track of the counts of people at the Boston Code Camp.  So that the administration for the Code Camp can better track the interest in the sessions.  The site allows for recording and tracking of data for the sessions, speakers, rooms, time slots, and counts at the event.     
