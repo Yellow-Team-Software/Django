@@ -4,60 +4,56 @@ from .forms import *
 from .filters import *
 
 # Create your views here.
-def rooms(request):
-	rooms = Room.objects.all()
 
-	form = RoomForm()
-
-	if request.method =='POST':
-		form = RoomForm(request.POST)
-		if form.is_valid():
-			form.save()
-		return redirect('/counts/room/')
-
-
-	context = {'rooms':rooms, 'form':form}
-	return render(request, 'countmanager/rooms.html', context)
-
-def sess(request):
-	sess = Session.objects.all()
-
-	form = SessForm()
-
-	if request.method =='POST':
-		form = SessForm(request.POST)
-		if form.is_valid():
-			form.save()
-		return redirect('/counts/sess/')
-
-
-	context = {'sessions':sess, 'form':form}
-	return render(request, 'countmanager/sessions.html', context)
-
-def speakers(request):
-	speakers = Speaker.objects.all()
-
-	form = SpeakerForm()
-
-	if request.method =='POST':
-		form = SpeakerForm(request.POST)
-		if form.is_valid():
-			form.save()
-		return redirect('/counts/speaker/')
-
-
-	context = {'speakers':speakers, 'form':form}
-	return render(request, 'countmanager/speakers.html', context)
 
 
 def homePage(request):
 	sessions = Session.objects.all()
 	form = SessionFilter(request.GET, queryset=sessions)
 
+	print(form)
+
+
+	context = { 'filter':form}
+	return render(request, 'countmanager/SelectSess.html', context)
+
+
+def bme(request,pk):
+
+	selected_session=Session.objects.get(id=pk)
+	
+	context= {"sess" : selected_session}
+
+	return render(request, 'countmanager/BME.html', context)
+
+def recordCount(request,pk,bme):
+
+	print(bme)
+
+	selected_session=Session.objects.get(id=pk)
+	
+	form= CountsForm()
+	label=""
+
+	if bme == "b":
+		form=form["beginning"]
+		label="Beginning"
+	elif bme == "m":
+		form=form["middle"]
+		label="Middle"
+	elif bme == "e":
+		form=form["end"]
+		label="End"
+
+	print(selected_session.counts)
+
+	#print (form["beginning"])
+
+	context= {"sess" : selected_session, "form" : form, "label":label}
+
+
 	
 
-
-	context = {'speakers':speakers, 'filter':form}
-	return render(request, 'countmanager/SelectSess.html', context)
+	return render(request, 'countmanager/RecordCount.html',context)
 
 

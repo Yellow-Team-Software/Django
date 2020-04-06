@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <style>
 
@@ -65,7 +64,7 @@
 
 
 	.item-row{
-        
+        text-align: center;
 		background-color: #af56c55b;
 
 		margin:  5%;
@@ -94,9 +93,11 @@
     }
 	
     .bt{
+        
         border-radius: 10px;
-        width: 250px;
+        width: 50%;
         font-size: 20px;
+        margin: 10 0;
     }
 
 
@@ -106,7 +107,8 @@
         color: rgb(0, 255, 255);
     }
 
-    form {
+    .form {
+        align-self: center;
       margin: 10 150;
       text-align: left;
       padding: 30px 39px;
@@ -119,7 +121,7 @@
     .btn-info{
       border-width: 0;
       background:  rgba(152, 174, 213, 0.781);
-
+      margin-left: 24%;
     }
 
     .label{
@@ -134,7 +136,16 @@
       
 
     }
-    
+
+    .buttons{
+        
+        margin-left: 30%;
+    }
+
+    .dented{
+        margin-left: 7%;
+    }
+
     .sessTitle{
       text-align: left;
       text-decoration: underline;
@@ -156,63 +167,19 @@
    
 </style>
 
-
-{% csrf_token %}
-
-
-
-
 <div class="center-column">
-{% block content %}
+    {% block content %}
+    <head class ="title">
+        Boston Code Camp Attendance Record-Keeper
+      </head>
 
-<head class ="title">
-  Boston Code Camp Attendance Record-Keeper
-</head>
+      
 
-
-  <form class="input" method="get" >
-
-    <head>
-
-
-      Find your session: 
-
-
-    </head>
-
-    <div> </div>
-
-      <div class ="form" >
-
-        {% for field in filter.form %}
-          <div class="fieldWrapper">
-            {{ field.errors }}
-
-            <span class = label>
-              {{ field.label_tag }}
-            </span>
-            
-            <span class = label>
-              {{ field }}
-            </span>
-             
-          </div>
-
-
-        {% endfor %}
-        
-      </div>
-      <div class="mybutton">
-        <button class="bt btn btn-info" type="submit">Apply Filter(s)</button>
+      <div class="dented">
+        selected session:
     </div>
-    
-  </form
-  >
-  
-  
-  
-  {% for sess in filter.qs %}
-    <div class="item-row">
+
+    <div class ="item-row" >
 
       <div class="sess" >
 
@@ -224,15 +191,17 @@
           <div class="sessAtr">time slot: {{ sess.time_slot }}</div>
         </ul>
       </div>
-        
-
-
-
-      <a class="bt2 btn btn-sm btn-info sessSelect" href="{% url 'bme' sess.id %}"  >record attendance for this session</a>  
     </div>
-    
-  {% endfor %}
 
-  
-{% endblock %}
+
+    <form>
+
+      <span>
+        Enter Attendance Count at {{label}} of the Session:{{form}}
+      </span>
+
+      <button class="bt btn btn-info" type="submit">Submit</button>
+    </form>
+
+    {% endblock %}
 </div>
