@@ -25,3 +25,4 @@ class SessionFilter(django_filters.FilterSet):
     class Meta:
         model = Session
         fields = ['speaker', 'room', 'time_slot' ]
+        ordering = ('name',)

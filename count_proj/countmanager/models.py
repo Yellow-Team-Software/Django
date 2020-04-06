@@ -8,6 +8,9 @@ class Room(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ('name',)
+
 class Speaker(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
@@ -18,6 +21,9 @@ class Speaker(models.Model):
     def __str__(self):
         return self.first_name +" "+ self.last_name
 
+    class Meta:
+        ordering = ('first_name',)
+
 
 
 class TimeSlot(models.Model):
@@ -27,6 +33,9 @@ class TimeSlot(models.Model):
 
     def __str__(self):
         return str(self.start_time) +" - "+ str(self.end_time)
+
+    class Meta:
+        ordering = ('start_time',)
 
 class Counts(models.Model):
     beginning = models.IntegerField(default=0)
