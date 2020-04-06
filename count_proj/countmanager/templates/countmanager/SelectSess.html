@@ -50,7 +50,7 @@
 
 		width: 80% ;
 
-		margin: 5% auto;
+		margin: 3% auto;
 
 		padding:20px;
 
@@ -153,6 +153,12 @@
       margin: 35 0;
       float: right;
     }
+
+    .msg{
+      text-align: center;
+      margin: 5 0;
+      color: rgb(18, 196, 92);
+    }
    
 </style>
 
@@ -160,7 +166,9 @@
 {% csrf_token %}
 
 
-
+<div class = "msg">
+  {{ msg }}
+</div>
 
 <div class="center-column">
 {% block content %}

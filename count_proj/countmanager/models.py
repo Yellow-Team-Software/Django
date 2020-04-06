@@ -39,7 +39,9 @@ class Session(models.Model):
     room = models.ForeignKey(Room,on_delete=models.CASCADE)
     time_slot = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
 
-    counts=models.ForeignKey(Counts, on_delete=models.CASCADE, null=True, blank=True)
+    beginning_count = models.IntegerField(default=0, blank=True)
+    middle_count = models.IntegerField(default=0, blank=True)
+    end_count = models.IntegerField(default=0, blank=True)
 
     def __str__(self):
         return self.name + "\n by: " + self.speaker.__str__() + "\n in room: "+ self.room.__str__()

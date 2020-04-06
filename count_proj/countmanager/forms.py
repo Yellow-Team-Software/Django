@@ -10,3 +10,8 @@ class CountsForm(forms.ModelForm):
 	    model = Counts
 	    fields = '__all__'
 
+class SessForm(forms.ModelForm):
+    #name= forms.CharField(widget= forms.TextInput(attrs={'placeholder':'Add new task...'}))
+    class Meta:
+	    model = Session
+	    fields = '__all__'

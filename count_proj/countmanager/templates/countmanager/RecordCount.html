@@ -167,6 +167,9 @@
    
 </style>
 
+{% csrf_token %}
+
+
 <div class="center-column">
     {% block content %}
     <head class ="title">
@@ -194,7 +197,9 @@
     </div>
 
 
-    <form>
+    <form method="POST" action="{% url 'record_count' sess.id label %}">
+
+      {% csrf_token %}
 
       <span>
         Enter Attendance Count at {{label}} of the Session:{{form}}
