@@ -8,8 +8,6 @@ from .filters import *
 
 
 def homePage(request):
-
-
 	
 	print(request)
 
@@ -23,7 +21,7 @@ def homePage(request):
 	
 	return render(request, 'countmanager/SelectSess.html', context)
 
-
+#beggining middle end
 def bme(request,pk):
 
 	selected_session=Session.objects.get(id=pk)

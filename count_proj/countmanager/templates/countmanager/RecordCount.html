@@ -164,6 +164,13 @@
       margin: 35 0;
       float: right;
     }
+
+    .specialText{
+        font-size: 16px;
+        margin: 10 0;
+        text-align: center;
+        padding: 30px 0px;
+    }
    
 </style>
 
@@ -196,6 +203,9 @@
       </div>
     </div>
 
+    <div class="specialText">
+      *If the number in the box isnt 0, then this count has been already recorded. Sumbitting a new number will overide the previously recorded count. 
+  </div>
 
     <form method="POST" action="{% url 'record_count' sess.id label %}">
 
