@@ -1,4 +1,7 @@
-# Django
+# Atendance Record Keeping App
+Built with Django
+
+![site preview](/bcc.png)
 
 ## Installing Dependencies
   install python 3.8 and django.
